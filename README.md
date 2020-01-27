@@ -16,6 +16,7 @@ comment:  This document shall provide an entire compendium and course on the
 
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
+          https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer-legacy.js
 
 link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
@@ -25,6 +26,9 @@ translation: Deutsch  translations/German.md
 translation: Français translations/French.md
 translation: Русский  translations/Russian.md
 
+@mv: <model-viewer src="@2" ios-src="@1" alt="@0" background-color="grey" shadow-intensity="1" camera-controls ar ar-scale="fixed" interaction-prompt="auto" auto-rotate magic-leap style="width:100%;height:400px"></model-viewer>
+
+@qr: <br/><img src="https://api.qrserver.com/v1/create-qr-code/?size=222x222&data=@0"/>  <== Apple and Google ==> <img src="https://api.qrserver.com/v1/create-qr-code/?size=222x222&data=@1"/>
 
 -->
 
@@ -1950,6 +1954,94 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMWMMMMMMMWMWWWWMMWMMWWWWMMWWWWWWWWWWWWMWWWMMWMWWMMMMWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 `````````
 
+## Using 3D and Augmented Reality with model-viewer
+
+@mv(A 3D model of an astronaut,
+  https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz,
+  https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.glb)
+
+@qr(https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz,https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.glb)
+
+
+    --{{0}}--
+This presentation was written in an interactive dialect of markdown that can also embed HTML. This allowed me to embed an interactive 3D model-viewer, an open source project out of Google.
+The device we currently present on, might use a mouse, but not a camera for AR.
+Please load the AR to your own Smartphone by pointing your camera to the screen. Use the left marker for iOS and the right one for Android.
+
+### How this was achieved
+
+    {{0-1}}
+``` html Include this line to the introducing comment to load and prepare the model viewer polyfill
+script: https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer-legacy.js
+```
+    --{{0}}--
+Include this line to the introducing comment to load and prepare the model viewer polyfill.
+
+
+    {{1-4}}
+``` html Place this on a slide to show a viewer in 3D and potentially AR as well
+<model-viewer
+  src="https://example.com/models/Astronaut.glb"
+  ios-src="https://example.com/models/Astronaut.usdz#allowsContentScaling=0"
+  alt="A 3D model of an astronaut"
+  background-color="#70BCD1"
+  shadow-intensity="1"
+  camera-controls
+  ar ar-scale="fixed"
+  interaction-prompt="auto"
+  auto-rotate magic-leap
+  style="width:100%; height:400px" >
+</model-viewer>
+```
+``` html and this to also show QR codes
+![Apple](https://api.qrserver.com/v1/create-qr-code/?size=222x222&data=https://.../Astronaut.usdz)  
+<- Apple vs. Google ->
+![Google](https://api.qrserver.com/v1/create-qr-code/?size=222x222&data=UrlTo3dPageWithModelViewer.html)
+```
+
+    --{{1}}--
+Place this on a slide to show a viewer in 3D and potentially AR as well. And the next block to also show QR codes.
+
+    {{2}}
+``` html Or simply call these two macros
+@mv(A 3D model of an astronaut,
+  https://example.com/models/Astronaut.usdz,
+  https://example.com/models/Astronaut.glb)
+@qr(https://example.com/models/Astronaut.usdz,https://example.com/models/Astronaut.glb)
+```
+
+    --{{2}}--
+Or simply call these two macros:
+
+    {{3}}
+> **Hint:** To restrict the scale in AR to 1:1, add the following:
+>
+> | Platform | where | what |
+> |----------|-------|---------------------|
+> | iOS | at the end of **ios-src** URL | ...`#allowsContentScaling=0` |
+> | model-viewer | as HTML attribute | `ar-scale="fixed"` |
+
+    {{3}}
+All details how to work with the model-viewer polyfill can be found on its [developer doc page](https://modelviewer.dev/)
+
+  --{{3}}--
+All details how to work with the model-viewer can be found on its developer documentation site.
+
+## Future enhancements
+
+- Use a lia macro for the repeating model-viewer HTML.
+- Or make it a native extension to the dialect with extra UI logic.
+
+## Where to find this ?
+
+| Name    | Thomas Kumlehn                    |
+| ------- | --------------------------------- |
+| Project | __ https://LiaScript.github.io __ |
+| Email   | pixelpartner@icloud.com           |
+| GitHub  | https://github.com/pixelpartner   |
+| Twitter | @pixelpartner                     |
+
+
 ## Macros
 
 Todo, description of the currently applied macro-syntax.
@@ -1967,8 +2059,7 @@ Todo, description of the currently applied macro-syntax.
 {1}{<h1> André Dietrich </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{1}}--
-Programming paradigm experimenter and creator of liaScript and SelectScript...
-
+Programming paradigm experimenter and creator of liaScript and SelectScript ...
 
 
 {2}{<h1> Sebastian Zug  </h1>} <!-- class = "animated fadeInUpBig" -->
@@ -1981,3 +2072,8 @@ The mind in the dark and the man behind the eLab-project ...
 
 --{{3}}--
 Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
+
+{4}{<h1> Thomas Kumlehn </h1>} <!-- class = "animated fadeInUpBig" -->
+
+--{{4}}--
+Fullstack developer, liaScript fanboy and AR evangelist ...
