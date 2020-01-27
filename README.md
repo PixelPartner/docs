@@ -1960,11 +1960,11 @@ MMMMMMMMMMMMMMMMMMMMMWMMMMMMMWMWWWWMMWMMWWWWMMWWWWWWWWWWWWMWWWMMWMWWMMMMWWMMMMMM
   https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz,
   https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.glb)
 
-@qr(https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz,https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.glb)
+@qr(https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz,https://liascript.github.io/course/?https://raw.githubusercontent.com/PixelPartner/docs/master/README.md#68)
 
 
     --{{0}}--
-This presentation was written in an interactive dialect of markdown that can also embed HTML. This allowed me to embed an interactive 3D model-viewer, an open source project out of Google.
+This presentation was written in an interactive dialect of markdown that can also embed HTML and Javascript. This allows us to embed an interactive 3D model-viewer, an open source project out of Google.
 The device we currently present on, might use a mouse, but not a camera for AR.
 Please load the AR to your own Smartphone by pointing your camera to the screen. Use the left marker for iOS and the right one for Android.
 
